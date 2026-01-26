@@ -1,2 +1,3 @@
 User-agent: *
-Allow: https://icbggatelayer.github.io/ICBG/
+Allow: /
+Sitemap: https://icbggatelayer.github.io/ICBG/sitemap.xml
