@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ========== ПЕРЕМЕННЫЕ И ГЛОБАЛЬНЫЕ СТИЛИ ========== */
+        /* ========== ТОЛЬКО ТЁМНАЯ ТЕМА (АЙСБЕРГ) ========== */
         :root {
             --deep-blue: #0A192F;
             --ocean-blue: #112240;
@@ -30,41 +30,6 @@
             --gradient-deep: linear-gradient(135deg, #0D1B2A 0%, #0A192F 50%, #112240 100%);
             --header-bg: rgba(10, 25, 47, 0.85);
             --footer-bg: #0A192F;
-            
-            /* Светлая тема */
-            --light-bg: #F8FAFC;
-            --light-surface: #FFFFFF;
-            --light-card: rgba(255, 255, 255, 0.9);
-            --light-border: rgba(100, 116, 139, 0.1);
-            --light-text: #1E293B;
-            --light-text-secondary: #64748B;
-            --light-gradient: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 50%, #E0F7FA 100%);
-            --light-accent: #0EA5E9;
-            --light-accent-gradient: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 50%, #22D3EE 100%);
-            --light-glow: 0 0 20px rgba(14, 165, 233, 0.3);
-            --light-glass-shadow: 0 8px 32px rgba(14, 165, 233, 0.1);
-        }
-
-        body.light-theme {
-            --deep-blue: #F8FAFC;
-            --ocean-blue: #FFFFFF;
-            --ice-blue: #0EA5E9;
-            --frost-white: #1E293B;
-            --glacier-blue: #E2E8F0;
-            --arctic-cyan: #38BDF8;
-            --wave-teal: #22D3EE;
-            --abyss-blue: #F1F5F9;
-            --neon-blue: #0EA5E9;
-            --glass-effect: rgba(14, 165, 233, 0.05);
-            --glass-border: rgba(100, 116, 139, 0.15);
-            --glass-shadow: var(--light-glass-shadow);
-            --neon-glow: var(--light-glow);
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --gradient-ocean: var(--light-gradient);
-            --gradient-ice: var(--light-accent-gradient);
-            --gradient-deep: linear-gradient(135deg, #F1F5F9 0%, #F8FAFC 50%, #FFFFFF 100%);
-            --header-bg: rgba(255, 255, 255, 0.9);
-            --footer-bg: #F1F5F9;
         }
 
         * {
@@ -80,7 +45,6 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            transition: background 0.5s ease, color 0.5s ease;
             line-height: 1.5;
         }
 
@@ -127,7 +91,7 @@
             padding: 1.5rem;
         }
 
-        /* ========== ХЕДЕР (без изменений, компактный) ========== */
+        /* ========== ХЕДЕР ========== */
         header {
             background: var(--header-bg);
             backdrop-filter: blur(20px);
@@ -139,7 +103,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.5s ease;
         }
 
         .logo {
@@ -209,51 +172,6 @@
             gap: 10px;
         }
 
-        .theme-toggle-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--glass-effect);
-            padding: 4px 8px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-        }
-
-        .theme-toggle {
-            position: relative;
-            display: inline-block;
-            width: 36px;
-            height: 18px;
-        }
-
-        .theme-toggle input { opacity: 0; width: 0; height: 0; }
-
-        .theme-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--gradient-ice);
-            transition: .3s;
-            border-radius: 34px;
-        }
-
-        .theme-slider:before {
-            position: absolute;
-            content: "";
-            height: 12px;
-            width: 12px;
-            left: 3px;
-            bottom: 3px;
-            background-color: var(--deep-blue);
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .theme-slider:before { transform: translateX(18px); }
-
-        .theme-icon { font-size: 0.9rem; color: var(--frost-white); }
-
         .language-switcher {
             display: flex;
             gap: 2px;
@@ -267,21 +185,32 @@
         .lang-btn {
             background: transparent;
             border: none;
-            padding: 4px 10px;
+            padding: 6px 10px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
             transition: all 0.3s;
             color: var(--frost-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             min-width: 36px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
+        }
+
+        .lang-btn svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .lang-btn:hover, .lang-btn.active {
             background: var(--gradient-ice);
-            color: var(--deep-blue);
             box-shadow: var(--neon-glow);
+        }
+
+        .lang-btn:hover svg, .lang-btn.active svg {
+            filter: brightness(1.2);
         }
 
         /* ========== ГЕРОЙ ========== */
@@ -456,7 +385,7 @@
             font-size: 0.8rem;
         }
 
-        /* ========== КАРТОЧКИ (3 шт) С УСИЛЕННЫМ ВАУ ========== */
+        /* ========== КАРТОЧКИ ========== */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -813,7 +742,7 @@
             50% { opacity: 1; text-shadow: 0 0 15px var(--ice-blue); }
         }
 
-        /* ========== ROADMAP (СУПЕР-ВАУ, КОМПАКТНЫЙ) ========== */
+        /* ========== ROADMAP ========== */
         .roadmap-section {
             margin: 3rem 0;
             text-align: center;
@@ -1086,28 +1015,28 @@
             margin-bottom: 1.5rem;
         }
 
-.social-link {
-    width: 45px;
-    height: 45px;
-    background: rgba(100,255,218,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ice-blue);
-    font-size: 1.4rem;
-    text-decoration: none;  /* убираем подчеркивание */
-    transition: all 0.4s;
-    border: 1px solid rgba(100,255,218,0.2);
-}
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(100,255,218,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ice-blue);
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: all 0.4s;
+            border: 1px solid rgba(100,255,218,0.2);
+        }
 
-.social-link:hover {
-    transform: translateY(-5px) rotate(360deg);
-    background: var(--gradient-ice);
-    color: var(--deep-blue);
-    border-color: transparent;
-    box-shadow: 0 0 25px rgba(100,255,218,0.5);
-}
+        .social-link:hover {
+            transform: translateY(-5px) rotate(360deg);
+            background: var(--gradient-ice);
+            color: var(--deep-blue);
+            border-color: transparent;
+            box-shadow: 0 0 25px rgba(100,255,218,0.5);
+        }
 
         .copyright {
             color: var(--frost-white);
@@ -1148,7 +1077,7 @@
         }
     </style>
 </head>
-<body class="dark-theme">
+<body>
     <div class="wave-container"></div>
     <div class="ice-particles" id="iceParticles"></div>
 
@@ -1163,17 +1092,30 @@
             </div>
         </div>
         <div class="header-controls">
-            <div class="theme-toggle-container">
-                <div class="theme-toggle">
-                    <input type="checkbox" id="themeToggle">
-                    <label for="themeToggle" class="theme-slider"></label>
-                </div>
-                <span class="theme-icon" id="themeIcon"><i class="fas fa-moon"></i></span>
-            </div>
             <div class="language-switcher">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="ru">RU</button>
-                <button class="lang-btn" data-lang="zh">ZH</button>
+                <button class="lang-btn active" data-lang="en" title="English">
+                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="18" fill="#012169"/>
+                        <path d="M0 0L24 18M24 0L0 18" stroke="white" stroke-width="3"/>
+                        <path d="M12 0V18M0 9H24" stroke="white" stroke-width="4"/>
+                        <path d="M12 0V18M0 9H24" stroke="#C8102E" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="lang-btn" data-lang="ru" title="Русский">
+                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="6" fill="white"/>
+                        <rect y="6" width="24" height="6" fill="#0039A6"/>
+                        <rect y="12" width="24" height="6" fill="#D52B1E"/>
+                    </svg>
+                </button>
+                <button class="lang-btn" data-lang="zh" title="中文">
+                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="18" fill="#EE1C25"/>
+                        <circle cx="6" cy="9" r="2.5" fill="#FFDE00"/>
+                        <circle cx="6" cy="9" r="1.2" fill="#EE1C25"/>
+                        <path d="M10 4L11.5 7H15L12.5 9L14 12L10 10L6 12L7.5 9L5 7H8.5L10 4Z" fill="#FFDE00"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
@@ -1375,16 +1317,16 @@
         </section>
     </main>
     
-<footer>
-    <div class="social-links">
-        <a href="https://t.me/ICBG_news" target="_blank" class="social-link"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://www.gate.com/ru/post/gatefun-topic/ICBG?topic_id=25022" target="_blank" class="social-link"><i class="fas fa-comments"></i></a>
-    </div>
-    <p class="copyright" id="copyright">
-        © 2026 ICEBERG $ICBG | BUILT ON GATE LAYER NETWORK<br>
-        This memecoin is for entertainment and educational purposes. Always conduct your own research (DYOR) and invest responsibly.
-    </p>
-</footer>
+    <footer>
+        <div class="social-links">
+            <a href="https://t.me/ICBG_news" target="_blank" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.gate.com/ru/post/gatefun-topic/ICBG?topic_id=25022" target="_blank" class="social-link"><i class="fas fa-comments"></i></a>
+        </div>
+        <p class="copyright" id="copyright">
+            © 2026 ICEBERG $ICBG | BUILT ON GATE LAYER NETWORK<br>
+            This memecoin is for entertainment and educational purposes. Always conduct your own research (DYOR) and invest responsibly.
+        </p>
+    </footer>
 
     <script>
         const translations = {
@@ -1507,35 +1449,6 @@
             }
         };
 
-        // Theme switcher
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-
-        function enableLightTheme() {
-            body.classList.add('light-theme');
-            body.classList.remove('dark-theme');
-            themeToggle.checked = true;
-            themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', 'light');
-        }
-        function enableDarkTheme() {
-            body.classList.add('dark-theme');
-            body.classList.remove('light-theme');
-            themeToggle.checked = false;
-            themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
-            localStorage.setItem('theme', 'dark');
-        }
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) enableLightTheme();
-            else enableDarkTheme();
-        }
-        themeToggle.addEventListener('change', function() {
-            this.checked ? enableLightTheme() : enableDarkTheme();
-        });
-
         // Language switcher
         function updateContent(lang) {
             const data = translations[lang];
@@ -1601,7 +1514,6 @@
                 btn.classList.remove('active');
                 if (btn.dataset.lang === savedLang) btn.classList.add('active');
             });
-            initTheme();
         });
     </script>
 </body>
